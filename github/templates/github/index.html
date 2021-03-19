@@ -2,12 +2,12 @@
 
 {% block title %}github app{% endblock %}
 
-<div class="contaiter mt-5 text-center">
-<div class="row">
-    <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 offset-sm-1 offset-md-2">
-        {% block content %}
-            hello hello
-        {% endblock %}
-    </div>
-</div>
-</div>
+{% block content %}
+    <form action="{% url 'github:detail' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input class="form-control me-2" type="search" placeholder="Enter user nick" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Send</button>
+        </div>
+    </form>
+{% endblock %}
