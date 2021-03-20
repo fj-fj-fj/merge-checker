@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import index, user_details
+from .views import index, get_details
 
 app_name = 'github'
 
 urlpatterns = [
     path('', index, name='index'),
-    path('user-detail/', user_details, name='detail'),
+    path('user-detail/', get_details, name='detail'),
 ]

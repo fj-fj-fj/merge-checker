@@ -3,5 +3,10 @@
 {% block title %}Projects list{% endblock %}
 
 {% block content %}
-    project list
+    <p>Список проектов, в которые <strong>{{ user }}</strong> делал пул-реквест и его смерджили</p>
+
+    {% for project in projects %}
+        {% include 'github/includes/project_card_template.html' with project=project %}
+    {% endfor %}
+
 {% endblock %}

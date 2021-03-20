@@ -1,0 +1,28 @@
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title">{{ project.name }}</h5>
+        Кол-во звезд: {{ project.stars }}
+        <a href="{{ project.html_url }}" class="btn btn-light">
+            <span>Ссылка на гитхаб</span>
+        </a>
+    </div>
+    <div>
+        <p class="card-text"><strong>Ссылки на смерженные пул-реквесты</strong></p>
+        {% for pull in project.pulls %}
+            {% if pull.merged %}
+                <a href="{{ pull.html_url }}" class="btn btn-light">
+                    {{ pull.body }} | Комментарии {{ pull.comments }}
+                </a>
+            {% endif %}
+        {% endfor %}
+        <hr>
+        <p class="card-text"><strong>Ссылки на несмерженные пул-реквесты</strong></p>
+        {% for pull in project.pulls %}
+            {% if not pull.merged %}
+                <a href="{{ pull.html_url }}" class="btn btn-light">
+                    {{ pull.body }} | Комментариев: {{ pull.comments }}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
