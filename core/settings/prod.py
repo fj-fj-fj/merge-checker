@@ -1,16 +1,22 @@
 import os
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+from .base import BASE_DIR
 
-DEBUG = False
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    '# This string is enough for testing :)'  # FIXME
+)
+
+DEBUG = True # FIXME False
 
 ADMIN = os.environ.get('ADMIN')
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'optional': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
