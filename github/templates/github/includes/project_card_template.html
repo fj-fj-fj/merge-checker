@@ -10,18 +10,22 @@
         <p class="card-text"><strong>Ссылки на смерженные пул-реквесты</strong></p>
         {% for pull in project.pulls %}
             {% if pull.merged %}
-                <a href="{{ pull.html_url }}" class="btn btn-light">
-                    {{ pull.body }} | Комментарии {{ pull.comments }}
-                </a>
+                <p>
+                    <a href="{{ pull.html_url }}" class="btn btn-light">
+                        {{ pull.title }} | Комментарии {{ pull.comments }}
+                    </a>
+                </p> 
             {% endif %}
         {% endfor %}
         <hr>
         <p class="card-text"><strong>Ссылки на несмерженные пул-реквесты</strong></p>
         {% for pull in project.pulls %}
             {% if not pull.merged %}
-                <a href="{{ pull.html_url }}" class="btn btn-light">
-                    {{ pull.body }} | Комментариев: {{ pull.comments }}
-                </a>
+                <p>
+                    <a href="{{ pull.html_url }}" class="btn btn-light">
+                        {{ pull.title }} | Комментариев: {{ pull.comments }}
+                    </a>
+                </p>
             {% endif %}
         {% endfor %}
     </div>
