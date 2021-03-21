@@ -27,7 +27,8 @@ def _get_pull_requests(user: str) -> Optional[List[dict]]:
     """Get and return pull-requests user list."""
     pull_requests: list = _get_json_data(user).get('items')
 
-    if pull_requests is None: return []
+    if pull_requests is None:
+        return []
 
     for pull in pull_requests:
         pull_request_url: str = pull.get('pull_request').get('url')

@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get(
     '# This string is enough for testing :)'  # FIXME
 )
 
-DEBUG = True # FIXME False
+DEBUG = True  # FIXME False
 
 ADMIN = os.environ.get('ADMIN')
 
