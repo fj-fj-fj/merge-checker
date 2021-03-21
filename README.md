@@ -1,5 +1,6 @@
 ## Merge-Checker
 
+[English version](README.eng.md)
 
 #### Веб-сервис, который позволит узнать, в какие проекты конкретный пользователь Гитхаба делал пул-реквесты и их смерджили. 
 
@@ -25,7 +26,6 @@ git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker
 python3 -m venv .venv
 source .venv/bin/activate
-cd app
 pip install -r requirements.txt
 ./manage.py runserver
 ```
