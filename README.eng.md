@@ -2,6 +2,12 @@
 
 [Russian version](README.md)
 
+
+[![Python](https://img.shields.io/static/v1?label=Python&style=plastic&logofor-the-badge&message=3&color=3776AB&logo=PYTHON)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/-django-green?style=flat&logo=django)](https://www.djangoproject.com/)
+[![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![CI](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml/badge.svg)](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml)
+
 #### See which projects the GitHub user made pull-requests to that were merged.
 
 
