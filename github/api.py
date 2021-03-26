@@ -11,25 +11,24 @@ except ImportError:
     pass
 
 
-def get_merge_info(user: str) -> Dict[str, Any]:
+def get_pull_request_data(user: str) -> Dict[str, Any]:
     user_url: str = URL.format(user)
-    pull_requests: list = _get_pull_requests(user_url)
+    pull_requests: list = _get_pull_request_user_list(user_url)
     if pull_requests:
-        projects: list = _get_project_list(pull_requests)
+        projects: list = _create_and_return_projects_user_list(pull_requests)
         return {'projects': projects}
     return {'projects': None}
 
 
-def _get_pull_requests(user: str) -> Optional[List[dict]]:
-    """Get and return pull-requests user list."""
-    pull_requests: list = _get_json_data(user).get('items')
+def _get_pull_request_user_list(user: str) -> Optional[List[dict]]:
+    pull_requests: list = _get_data_from_github_API(user).get('items')
 
     if pull_requests is None:
         return []
 
     for pull in pull_requests:
         pull_request_url: str = pull.get('pull_request').get('url')
-        pull_request_info: dict = _get_json_data(pull_request_url)
+        pull_request_info: dict = _get_data_from_github_API(pull_request_url)
 
         pull['merged'] = pull_request_info.get('merged')
         pull['html_url'] = pull_request_info.get('html_url')
@@ -37,14 +36,13 @@ def _get_pull_requests(user: str) -> Optional[List[dict]]:
     return pull_requests
 
 
-def _get_project_list(pulls: list) -> List[dict]:
-    """Create and return project list."""
+def _create_and_return_projects_user_list(pulls: list) -> List[dict]:
     projects = []
     names = set()
 
     for pull in pulls:
         repo_url: str = pull.get('repository_url')
-        repo: dict = _get_json_data(repo_url)
+        repo: dict = _get_data_from_github_API(repo_url)
 
         if (name := repo.get('name')) not in names:
             names.add(name)
@@ -61,5 +59,5 @@ def _get_project_list(pulls: list) -> List[dict]:
     return projects
 
 
-def _get_json_data(url: str) -> Dict[str, Any]:
+def _get_data_from_github_API(url: str) -> Dict[str, Any]:
     return requests.get(url).json()

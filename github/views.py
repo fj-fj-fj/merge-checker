@@ -2,7 +2,7 @@ from typing import Optional
 
 from django.shortcuts import render
 
-from .api import get_merge_info
+from .api import get_pull_request_data
 
 
 def index(requests):
@@ -11,7 +11,7 @@ def index(requests):
 
 def get_details(requests):
     username: str = requests.POST.get('search').strip()
-    projects: dict = get_merge_info(username)
+    projects: dict = get_pull_request_data(username)
 
     projects: Optional[list] = projects.get('projects')
 
