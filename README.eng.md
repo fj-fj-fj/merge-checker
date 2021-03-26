@@ -27,13 +27,19 @@ Since for unauthenticated requests, rate limiting allows up to [60 requests per 
 
 #
 ### Usage
-
-
-```
+```bash
 git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ./manage.py runserver
+```
+
+### Docker
+```bash
+git clone https://github.com/fj-fj-fj/merge-checker.git
+cd merge-checker
+docker build . --tag <image_name>
+docker run --port 8000:8000 <image_name>
 ```
