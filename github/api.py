@@ -1,21 +1,18 @@
 import requests
+
 from typing import List, Dict, Any, Optional
+from core.settings.base import API_URL
 
 try:
-    from django.conf.settings import GITHUB_TOCKEN as __t
+    from core.settings.local import GITHUB_TOKEN as __T
 
-    token = f'&authorization_request={__t}'
+    URL = API_URL + f'&authorization_request={__T}'
 except ImportError:
-    token = ''
-
-
-BASE_API_URL = 'https://api.github.com'
-
-SEARCH_PARAM = '/search/issues?q=type:pr+is:public+author:{}&per_page=300' + token
+    pass
 
 
 def get_merge_info(user: str) -> Dict[str, Any]:
-    user_url: str = BASE_API_URL + SEARCH_PARAM.format(user)
+    user_url: str = URL.format(user)
     pull_requests: list = _get_pull_requests(user_url)
     if pull_requests:
         projects: list = _get_project_list(pull_requests)
