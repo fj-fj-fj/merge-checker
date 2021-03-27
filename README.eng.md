@@ -1,4 +1,4 @@
-## Merge-Checker
+# Merge-Checker
 
 [Russian version](README.md)
 
@@ -8,8 +8,8 @@
 [![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![CI](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml/badge.svg)](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml)
 
-#### See which projects the GitHub user made pull-requests to that were merged.
-
+## Introduction
+ See which projects the GitHub user made pull-requests to that were merged.
 
 - On the main page, enter the username on the GitHub and click `Send`
 - As a result, a page with a list of projects to which the user made a pull-request to that was merged. For each project you can see:
@@ -26,7 +26,7 @@ The WEB-service is used by Githab API.
 Since for unauthenticated requests, rate limiting allows up to [60 requests per hour](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting "Rate limiting") , it is advisable to add an authorization token to `app.core.settings.base.TOKEN`. The `api.py` module of the` github` application has an optional `import` for the token.
 
 #
-### Usage
+## Installation
 ```bash
 git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ./manage.py runserver
 ```
 
-### Docker
+## Docker
 ```bash
 git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker

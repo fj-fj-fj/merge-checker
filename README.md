@@ -1,4 +1,4 @@
-## Merge-Checker
+# Merge-Checker
 
 [English version](README.eng.md)
 
@@ -8,7 +8,8 @@
 [![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 [![CI](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml/badge.svg)](https://github.com/fj-fj-fj/__main-readme/actions/workflows/test.yml)
 
-#### Веб-сервис, который позволит узнать, в какие проекты конкретный пользователь Гитхаба делал пул-реквесты и их смерджили. 
+## Что такое и зачем 
+Веб-сервис, который позволит узнать, в какие проекты конкретный пользователь Гитхаба делал пул-реквесты и их смерджили. 
 
 - На главной странице введите ник пользователя на Гитхабе и нажмите `Send`
 - В результате отобразится страница со списком проектов, в которые пользователь делал пул-реквест и его смерджили. По каждому проекту видно:
@@ -25,7 +26,7 @@
 Поскольку для неаутентифицированных запросов ограничение скорости позволяет обрабатывать до [60 запросов в час](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting "Ограничение скорости"), желательно добавить токен авторизации в `app.core.settings.base.TOKEN`. В модуле `api.py` приложения `github` есть опциональный `import` для токена.
 
 #
-### Установка и запуск
+## Установка и запуск
 ```bash
 git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker
@@ -35,7 +36,7 @@ pip install -r requirements.txt
 ./manage.py runserver
 ```
 
-### Docker
+## Docker
 ```bash
 git clone https://github.com/fj-fj-fj/merge-checker.git
 cd merge-checker
