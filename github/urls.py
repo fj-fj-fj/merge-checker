@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import index, get_details
+from .views import IndexPageView, PullRequestDetailView
 
 app_name = 'github'
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('user-detail/', get_details, name='detail'),
+    path('', IndexPageView.as_view(), name='index'),
+    path('user-detail/', PullRequestDetailView.as_view(), name='detail'),
 ]

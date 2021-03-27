@@ -1,25 +1,21 @@
-from typing import Optional
-
+from django.views.generic.base import TemplateView
+from django.views import View
 from django.shortcuts import render
 
-from .api import get_pull_request_data
+from .api import get_project_user_list_with_pull_requests
 
 
-def index(requests):
-    return render(requests, 'github/index.html')
+class IndexPageView(TemplateView):
+
+    template_name = 'github/index.html'
 
 
-def get_details(requests):
-    username: str = requests.POST.get('search').strip()
-    projects: dict = get_pull_request_data(username)
+class PullRequestDetailView(View):
 
-    projects: Optional[list] = projects.get('projects')
-
-    if projects is None:
-        return render(requests, 'github/index.html')
-
-    context = {
-        'projects': projects,
-        'user': username,
-    }
-    return render(requests, 'github/project_list.html', context)
+    def post(self, requests):
+        projects = get_project_user_list_with_pull_requests(requests)
+        context = {
+            'user': projects['owner'],
+            'projects': projects['projects'],
+        }
+        return render(requests, 'github/project_list.html', context)

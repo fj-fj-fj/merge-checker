@@ -11,7 +11,18 @@ except ImportError:
     pass
 
 
-def get_pull_request_data(user: str) -> Dict[str, Any]:
+def get_project_user_list_with_pull_requests(requests) -> dict:
+    username: str = requests.POST.get('search').strip()
+    projects: dict = _get_pull_request_data(username)
+    projects: Optional[list] = projects.get('projects')
+
+    return {
+        'owner': username,
+        'projects': projects if projects is not None else []
+    }
+
+
+def _get_pull_request_data(user: str) -> Dict[str, Any]:
     user_url: str = URL.format(user)
     pull_requests: list = _get_pull_request_user_list(user_url)
     if pull_requests:
